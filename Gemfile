@@ -64,6 +64,9 @@ gem 'rails-i18n'
 # リンク表示を可能にするgem
 gem "rails_autolink"
 
+# 検索機能のgem
+gem "ransack"
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

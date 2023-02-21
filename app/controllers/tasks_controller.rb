@@ -2,7 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :show, :destory]
 
   def index
-    @tasks = current_user.tasks.order(updated_at: :desc)
+    @q = current_user.tasks.ransack(params[:q])
+    # @tasks = current_user.tasks.order(updated_at: :desc)
+    @tasks = @q.result(distinct:true).recent
   end
 
   def show
@@ -19,8 +21,8 @@ class TasksController < ApplicationController
 
   def update
     
-    task.update!(task_params)
-    redirect_to tasks_url, notice: "タスク「#{task.name}」を更新しました。"
+    @task.update!(task_params)
+    redirect_to tasks_url, notice: "タスク「#{@task.name}」を更新しました。"
   end
 
   def create
