@@ -67,6 +67,9 @@ gem "rails_autolink"
 # 検索機能のgem
 gem "ransack"
 
+source "https://rubygems.org"
+# JS軽量化のライブラリ
+gem "terser"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

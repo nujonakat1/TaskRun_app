@@ -68,4 +68,4 @@ production:
   username: <%= ENV['DATABASE_DEV_USER'] %>
   password: <%= ENV['DATABASE_DEV_PASSWORD'] %>
   host: <%= ENV['DATABASE_DEV_HOST'] %>
-
+  
