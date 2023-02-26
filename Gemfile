@@ -74,9 +74,15 @@ gem "terser"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  #  Rails用のRSpecを導入
+  #  Rails 用の RSpec を導入
   gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
   gem 'factory_bot_rails'
+  # Capistrano の gem を追加
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 end
 
 group :development do
