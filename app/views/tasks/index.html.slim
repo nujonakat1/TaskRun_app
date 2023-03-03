@@ -1,11 +1,11 @@
 h1 タスク一覧
 
 = search_form_for @q, class: "mb-5" do |f|
-    .form-group.row
+    .form-group.row style="margin: 20px 0px"
         = f.label :name_cont, "名称", class: "col-sm-2 col-form-label"
         .col-sm-10 
             = f.search_field :name_cont, class: "form-control"
-    .form-group.row 
+    .form-group.row style="margin: 20px 0px"
         = f.label :created_at_gteq, "登録日時", class: "col-sm-2 col-form-label"
         .col-sm-10 
             = f.search_field :created_at_gteq, class: "form-control"
@@ -21,12 +21,14 @@ table.table.table-hover
         tr 
             th= Task.human_attribute_name(:name)
             th= Task.human_attribute_name(:created_at)
+            th= Task.human_attribute_name(:updated_at)
             th
     tbody
         - @tasks.each do |task|
             tr 
                 td = link_to task.name, task_path(task)
                 td = task.created_at 
+                td = task.updated_at
                 td 
                     =link_to "編集", edit_task_path(task), class: "btn btn-primary mr-3"
                     =button_to "削除", task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger"
