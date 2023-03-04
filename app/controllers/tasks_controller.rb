@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:edit, :update, :show, :destory]
+  before_action :set_task, only: [:edit, :update, :show]
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-    # @tasks = current_user.tasks.order(created_at: :desc)
     @tasks = @q.result(distinct:true).recent
+    @tasks = current_user.tasks.order(created_at: :asc)
   end
 
   def show
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    
+    task = current_user.tasks.find(params[:id])
     task.destroy
     redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
   end
