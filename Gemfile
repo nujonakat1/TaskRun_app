@@ -7,7 +7,7 @@ ruby "3.2.0"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
 # gem "mysql2", "~> 0.5"
@@ -51,8 +51,9 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 # Bootstrapを追加
-gem "bootstrap"
+# gem "bootstrap"
 gem "bootstrap-sass"
+gem "sprockets-rails" 
 
 # Slimの導入
 gem "slim-rails"
