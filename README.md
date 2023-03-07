@@ -13,8 +13,7 @@ http://3.136.99.27/login
   <li>Ruby on Rails 7.0.3.1</li>
   <li>MySQL 8.0.32</li>
   <li>AWS EC2</li>
-  <li>RSpec</li>
-  
+  <li>RSpec 6.0.1</li>
 </ul>
 
 <h2>機能の一覧</h2>
@@ -27,8 +26,10 @@ http://3.136.99.27/login
 </ul>
 
 <h2>テスト</h2>
-  <p>RSpec</p>
-  
+<ul>
+  <li>RSpec 6.0.1</li>
+</ul>
+
 
 <!-- # README
 
