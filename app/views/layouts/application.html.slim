@@ -16,7 +16,7 @@ html
                 -if current_user 
                     li.nav-item style="margin: 0px 20px"
                         a= link_to "タスク一覧", tasks_path, class: "nav-link"
-                        - if current_user.admin?
+                    - if current_user.admin?
                         li.nav-item style="margin: 0px 20px"
                             a= link_to "ユーザー一覧", admin_users_path, class: "nav-link"
                     li.nav-item style="margin: 0px 20px"
