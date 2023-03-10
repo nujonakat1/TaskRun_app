@@ -12,27 +12,27 @@ describe "タスク管理機能", type: :system do
         click_button "ログインする"
     end
 
-    shared_examples_for "ユーザーAが作成したタスクが表示される" do
+    shared_examples_for "ユーザーAが作成したタスク一覧が表示される" do
         it { expect(page).to have_content "最初のタスク" }
     end
     
-    describe "一覧表示機能" do
+    describe "⚫︎一覧表示機能" do
         context "ユーザーAがログインしているとき" do
             let(:login_user) { user_a }
 
-            it_behaves_like "ユーザーAが作成したタスクが表示される"
+            it_behaves_like "ユーザーAが作成したタスク一覧が表示される"
         end
 
         context "ユーザーBがログインしているとき" do
             let(:login_user) { user_b }
 
-            it "ユーザーAが作成したタスクが表示されない" do
+            it "ユーザーAが作成したタスク一覧が表示されない" do
                 expect(page).to have_no_content "最初のタスク"  
             end
         end
     end
 
-    describe "詳細表示機能" do
+    describe "⚫︎詳細表示機能" do
         context "ユーザーAがログインしているとき" do
             let(:login_user) { user_a }
 
@@ -40,11 +40,11 @@ describe "タスク管理機能", type: :system do
                 visit task_path(task_a)
             end
 
-            it_behaves_like "ユーザーAが作成したタスクが表示される"
+            it_behaves_like "ユーザーAが作成したタスク一覧が表示される"
         end
     end
 
-    describe "新規作成機能" do
+    describe "⚫︎新規作成機能" do
         let(:login_user) { user_a }
 
         before do
@@ -72,8 +72,32 @@ describe "タスク管理機能", type: :system do
         end
     end
 
-    describe "タスクの更新機能" do
-        let(:login_user) { user_a }
+    describe "⚫︎タスクの更新機能" do
+        let(:login_user) { user_a } # ユーザーがログインしていること ユーザーAが
 
+        before do
+            visit edit_task_path(task_a) # タスク管理機能describeで定義した task_a を編集画面URLで利用
+            fill_in "名称", with: task_name
+            click_button "更新する"
+        end
+
+        context "タスク編集画面で名称を入力したとき" do
+            let(:task_name) { "更新のテストを書く" }
+
+            it "正常に更新される" do
+                expect(page).to have_selector ".alert-success", text: "更新のテストを書く"  
+            end
+        end
+
+        context "タスク編集画面で名称を入力しなかったとき" do
+            let(:task_name) { "" }
+
+            it "エラーとなる" do
+                within "#error_explanation" do
+                    expect(page).to have_content "名称を入力してください"  
+                end
+            end
+        end
     end
+
 end
