@@ -73,10 +73,10 @@ describe "タスク管理機能", type: :system do
     end
 
     describe "⚫︎タスクの更新機能" do
-        let(:login_user) { user_a } # ユーザーがログインしていること ユーザーAが
+        let(:login_user) { user_a } 
 
         before do
-            visit edit_task_path(task_a) # タスク管理機能describeで定義した task_a を編集画面URLで利用
+            visit edit_task_path(task_a) 
             fill_in "名称", with: task_name
             click_button "更新する"
         end
@@ -98,6 +98,18 @@ describe "タスク管理機能", type: :system do
                 end
             end
         end
+    end
+
+    describe "⚫︎タスクの削除機能" do
+
+        before do
+
+        end
+
+        context "" do
+            
+        end
+        
     end
 
 end
