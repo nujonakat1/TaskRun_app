@@ -101,12 +101,21 @@ describe "タスク管理機能", type: :system do
     end
 
     describe "⚫︎タスクの削除機能" do
+        let(:login_user) { user_a }
 
         before do
-
+            visit task_path(task_a) 
+            fill_in "名称", with: task_name
+            click_button "削除"
         end
 
-        context "" do
+        context "タスク削除がされたとき" do
+
+            
+        end
+
+        context "タスク削除ができなかったとき" do
+            
             
         end
         
