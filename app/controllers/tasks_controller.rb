@@ -44,6 +44,12 @@ class TasksController < ApplicationController
     task = current_user.tasks.find(params[:id])
     task.destroy
     redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
+
+    # if request.referrer.nil?
+    #   redirect_to tasks_url, status: :see_other
+    # else
+    #   redirect_to tasks_url, notice: "タスク「#{task.name}」を削除しました。"
+    # end
   end
 
   private

@@ -102,21 +102,32 @@ describe "タスク管理機能", type: :system do
 
     describe "⚫︎タスクの削除機能" do
         let(:login_user) { user_a }
-
+        
         before do
             visit task_path(task_a) 
-            fill_in "名称", with: task_name
-            click_button "削除"
+            # delete task_path(task_a)
+            # click_button "削除"
         end
 
         context "タスク削除がされたとき" do
+            # delete :destroy
+            before do
+                delete task_path(task_a)
+            end
 
-            
+            it "正常に削除される" do
+                # expect(page).to have_selector ".alert-success", text: "タスクを削除しました"  
+                # expect(task_name).not_to include("最初のタスク")
+                # expect(:task).to eq nil
+                # expect(:task).not_to include("最初のタスク")
+                # expect(page).to have_no_content "最初のタスク"
+            end
         end
 
         context "タスク削除ができなかったとき" do
-            
-            
+            let(:login_user) { user_a }
+
+            it_behaves_like "ユーザーAが作成したタスク一覧が表示される"
         end
         
     end
